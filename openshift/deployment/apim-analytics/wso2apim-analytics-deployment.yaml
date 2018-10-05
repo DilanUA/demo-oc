@@ -115,6 +115,8 @@ spec:
           containerPort: 6067
           protocol: TCP
         volumeMounts:
+        - name: apim-analytics-bin
+          mountPath: /home/wso2carbon/wso2-config-volume/bin
         - name: apim-analytics-repo-conf
           mountPath: /home/wso2carbon/wso2-config-volume/repository/conf
         - name: apim-analytics-repo-conf-datasources
@@ -123,10 +125,12 @@ spec:
       imagePullSecrets:
       - name: wso2creds
       volumes:
+      - name: apim-analytics-bin
+        configMap:
+          name: apim-analytics-bin
       - name: apim-analytics-repo-conf
         configMap:
           name: apim-analytics-repo-conf
       - name: apim-analytics-repo-conf-datasources
         configMap:
           name: apim-analytics-repo-conf-datasources
-
